@@ -1,0 +1,24 @@
+﻿# Write your query or mutation here
+query allCards($cursor:String) {
+  allCards (after:$cursor rarities:[limited,rare,super_rare,unique] owned:true ) {
+    edges {
+      node {
+        player{slug}
+	powerBreakdown{season xp scarcity}
+        rarity
+        tradeableStatus
+        serialNumber
+       	latestEnglishAuction{
+          startDate
+          bidsCount
+          bestBid{amount amountInFiat{eur}}
+        }   
+        notContractOwners{from price transferType}
+      }   
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

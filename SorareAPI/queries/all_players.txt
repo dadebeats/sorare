@@ -1,0 +1,50 @@
+# Write your query or mutation here
+query playersInOneClub($teamSlug : String!) {
+club(slug:$teamSlug){
+  	slug
+    activePlayers{
+      nodes{
+        slug
+        clubMemberships{
+          club{
+            slug
+          }
+          startDate
+        }
+        position
+        age
+        subscriptionsCount 
+        height
+        weight
+        appearances
+          status{
+          playingStatus
+          lastFiveSo5Appearances
+          lastFiveSo5AverageScore
+          lastFifteenSo5Appearances
+          lastFifteenSo5AverageScore
+        }
+        country{
+          code
+        }
+        cardSupply{
+          limited
+          rare
+          superRare
+          unique
+        }
+	 	allSo5Scores(first:250){
+    		nodes{
+			game{so5Fixture{gameWeek} date}
+			score
+			decisiveScore{totalScore}
+      		positiveDecisiveStats{category stat statValue}
+      		negativeDecisiveStats{category stat statValue}
+			allAroundStats{category stat statValue}		
+          }
+        } 
+      }
+    }
+  } 
+}
+

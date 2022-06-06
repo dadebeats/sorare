@@ -1,0 +1,37 @@
+﻿query statsForOnePlayer{ 
+player(slug: "mario-gotze") {
+  			slug
+        position
+        age
+        subscriptionsCount    
+        height
+        weight 
+        appearances
+        status{
+          playingStatus
+          lastFiveSo5Appearances
+          lastFiveSo5AverageScore
+          lastFifteenSo5Appearances
+          lastFifteenSo5AverageScore
+        }
+        country{code}
+        cardSupply{
+          limited
+          rare
+          superRare
+          unique
+        }
+
+	 			allSo5Scores(last:50){
+    			nodes{
+            game{
+              so5Fixture{gameWeek}
+            }
+    				game{date}
+          	score
+            decisiveScore{totalScore}
+    				allAroundStats{category stat statValue}
+          }
+        } 		
+} 
+}

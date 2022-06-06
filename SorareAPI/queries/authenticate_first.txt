@@ -1,0 +1,22 @@
+mutation SignInMutation($input: signInInput!) {
+  signIn(input: $input) {
+    otpSessionChallenge
+    currentUser {
+      slug
+      jwtToken(aud: "sorare_plus") {
+        token
+        expiredAt
+      }
+    }
+    errors {
+      message
+    }
+  }
+}
+
+{
+  "input": {
+    "email": "sorareenjoyer@gmail.com",
+    "password": salt
+  }
+}

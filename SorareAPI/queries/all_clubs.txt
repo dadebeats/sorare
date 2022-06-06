@@ -1,0 +1,1 @@
+{clubsReady{slug name activeCompetitions{slug}}}
